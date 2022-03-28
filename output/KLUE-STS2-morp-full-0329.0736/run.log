@@ -1,0 +1,131 @@
+/home/chris/miniconda3/envs/DeepKorean/bin/python /dat/proj/DeepKorean/src/train.py --config conf/KLUE-STS2-morp-full.json
+Global seed set to 1
+================================================================================================================================================================================================================================================================
+[2022/03/29 07:36:32] [INIT] train (KLUE-STS2-morp-full-0329.0736)
+================================================================================================================================================================================================================================================================
+- state.name                = (str) KLUE-STS2-morp-full-0329.0736
+- state.seed                = (int) 1
+- state.gpus                = (list) [2]
+- state.strategy            = (NoneType) None
+- state.precision           = (int) 32
+- state.test_batch_size     = (int) -1
+- state.train_batch_size    = (int) -1
+- state.max_sequence_length = (int) 128
+- state.pretrained          = (str) pretrained/KorBERT-Base-morp
+- state.data_files          = (dict) {'train': 'data/klue-sts-morp/train.json', 'valid': 'data/klue-sts-morp/validation.json', 'test': None}
+- state.input_text1         = (str) sentence1_morp
+- state.input_text2         = (str) sentence2_morp
+- state.loss_metric         = (str) CrossEntropyLoss
+- state.score_metric        = (dict) {'major': 'glue', 'minor': 'mrpc'}
+- state.num_train_epochs    = (int) 5
+- state.scheduling_epochs   = (int) 1
+- state.scheduling_gamma    = (float) 1.0
+- state.learning_rate       = (float) 2e-05
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+The tokenizer class you load from this checkpoint is not the same type as the class this function is called from. It may result in unexpected tokenization.
+The tokenizer class you load from this checkpoint is 'BertTokenizer'.
+The class this function is called from is 'KorbertTokenizer'.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+- pretrained_tokenizer      = KorbertTokenizer / is_fast=False / vocab_size=30349 / model_input_names=input_ids, token_type_ids, attention_mask / model_max_length=128 / padding_side=right / special_tokens=[UNK], [SEP], [PAD], [CLS], [MASK]
+- tokenized.sample.plain    = [CLS] 한국어 사전학습 모델을 공유합니다. [SEP]
+- tokenized.sample.morps    = [CLS] 한국어/NNP 사전/NNG 학습/NNG 모델/NNG 을/JKO 공유/NNG 하/XSV ㅂ니다/EF ./SF [SEP]
+- tokenized.sample.tks      = [CLS] 한국어/NNP_ 사전/NNG_ 학습/NNG_ 모델/NNG_ 을/JKO_ 공유/NNG_ 하/XSV_ ㅂ니다/EF_ ./SF_ [SEP]
+- tokenized.sample.ids      = 2 4372 2050 4778 830 11 3025 9 158 7 3
+- tokenized.examples[0].tks = [CLS] 숙소/NNG_ 위치/NNG_ 는/JX_ 찾/VV_ 기/ETN_ 쉽/VA_ 고/EC_ 일반/NNG_ 적/XSN_ 이/VCP_ ㄴ/ETM_ 한국/NNP_ 의/JKG_ 반/NNG_ 지하/NNG_ 숙소/NNG_ 이/VCP_ ㅂ니다/EF_ ./SF_ [SEP] 숙박/NNG_ 시설/NNG_ 의/JKG_ 위치/NNG_ 는/JX_ 쉽/VA_ 게/EC_ 찾/VV_ 을/ETM_ ... [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD]
+- tokenized.examples[0].ids = 2 6177 746 18 508 49 956 23 791 58 15 10 100 13 707 1814 6177 15 158 7 3 7872 1472 13 746 18 956 47 508 93 ... 0 0 0 0 0 0 0 0 0 0
+- tokenized.examples[1].tks = [CLS] 위반/NNG_ 행위/NNG_ 조사/NNG_ 등/NNB_ 을/JKO_ 거부/NNG_ ·/SP_ 방해/NNG_ ·/SP_ 기피/NNG_ 하/XSV_ ㄴ/ETM_ 자/NNB_ 는/JX_ 500/SN_ 만/NR_ 원/NNB_ 이하/NNG_ 과태/NNG_ 료/XSN_ 부과/NNG_ 대상/NNG_ 이/VCP_ 다/EF_ ./SF_ [SEP] 시민/NNG_ 들/XSN_ 스스로/MAG_ ... [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD]
+- tokenized.examples[1].ids = 2 2129 1268 268 51 11 1850 75 3992 75 8998 9 10 2351 18 1259 85 86 814 8305 1049 3709 527 15 8 7 3 1103 36 2202 ... 0 0 0 0 0 0 0 0 0 0
+- tokenized.examples[2].tks = [CLS] 회사/NNG_ 가/JKS_ 보내/VV_ ㄴ/ETM_ 메일/NNG_ 은/JX_ 이/MM_ 지 메일/NNG_ 이/JKC_ 아니/VCN_ 라/EC_ 다른/MM_ 지 메일/NNG_ 계정/NNG_ 으로/JKB_ 전달/NNG_ 하/XSV_ 어/EC_ 주/VX_ 어/EF_ ./SF_ [SEP] 사람/NNG_ 들/XSN_ 이/JKS_ 주로/MAG_ 네이버/NNP_ ... [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD] [PAD]
+- tokenized.examples[2].ids = 2 530 24 561 10 5901 21 80 171 5901 114 105 265 213 171 5901 5617 28 3707 9 20 129 1136 7 3 139 36 16 1748 7505 ... 0 0 0 0 0 0 0 0 0 0
+- state.train_batch_size    = (int) 96
+- state.test_batch_size     = (int) 96
+- raw_datasets[train]       =  11,668 samples / labels.binary-label[int64], labels.label[float64], labels.real-label[float64], sentence1_morp_origin[string], sentence2_morp_origin[string], input_ids[list], token_type_ids[list], attention_mask[list]
+- raw_datasets[valid]       =     519 samples / labels.binary-label[int64], labels.label[float64], labels.real-label[float64], sentence1_morp_origin[string], sentence2_morp_origin[string], input_ids[list], token_type_ids[list], attention_mask[list]
+- input_text_columns        = sentence1_morp, sentence2_morp
+- label_column              = labels.binary-label
+Some weights of the model checkpoint at pretrained/KorBERT-Base-morp were not used when initializing BertModel: ['cls.predictions.transform.dense.bias', 'cls.seq_relationship.weight', 'cls.predictions.transform.dense.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.bias', 'cls.predictions.decoder.weight']
+- This IS expected if you are initializing BertModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+- pretrained_model          = BertModel(
+  (embeddings): BertEmbeddings(
+    (word_embeddings): Embedding(30349, 768, padding_idx=0)
+    (position_embeddings): Embedding(512, 768)
+    (token_type_embeddings): Embedding(2, 768)
+    (LayerNorm): LayerNorm((768,), eps=1e-12, elementwise_affine=True)
+    (dropout): Dropout(p=0.1, inplace=False)
+  )
+  ...
+  (pooler): BertPooler(
+    (dense): Linear(in_features=768, out_features=768, bias=True)
+    (activation): Tanh()
+  )
+)
+- encoded.input_ids         = (2x128) / 2 4372 2050 4778 830 11 3025 9 158 7 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ... 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+- encoded.attention_mask    = (2x128) / 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ... 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+- encoded.token_type_ids    = (2x128) / 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ... 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+- forwarded.hidden_output   = (2x128x768) / tensor([[ 0.2151, -0.4961,  0.3222,  ..., -0.4728, -0.2220, -0.1382],
+        [-0.3286, -1.2632, -0.3164,  ..., -1.9066, -0.3153,  0.3240],
+        [-0.7007, -1.4466, -0.3666,  ..., -1.9129,  0.2979,  0.0153],
+        ...,
+        [-0.0184, -0.8094,  0.0561,  ..., -0.6766, -0.2501,  0.1140],
+        [ 0.0180, -0.6274,  0.1342,  ..., -0.3521, -0.1757,  0.1839],
+        [-0.1911, -0.2931,  0.2656,  ..., -0.0608, -0.2689,  0.1906]],
+       grad_fn=<SelectBackward0>)
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+- model                     = HeadModel(pretrained=KorBERT-Base-morp)
+- optimizer                 = Adam(lr=2e-05)
+- scheduler                 = StepLR(step_size=1, gamma=1.0)
+- loss_metric               = CrossEntropyLoss()
+- score_metric              = load_metric(glue, mrpc)
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+================================================================================================================================================================================================================================================================
+[2022/03/29 07:36:54] (Epoch 01) composed #1: learning_rate=0.0000200000
+[2022/03/29 07:36:58] (Epoch 01) training #1: 100%|██████████████████████████████| 122/122 [01:14<00:00,  1.64it/s]
+[2022/03/29 07:38:17] (Epoch 01) metering #1: 100%|██████████████████████████████| 122/122 [00:24<00:00,  5.00it/s]
+[2022/03/29 07:38:43] (Epoch 01) metering #1: 100%|██████████████████████████████| 6/6 [00:00<00:00,  6.91it/s]
+[2022/03/29 07:38:48] (Epoch 01) measured #1: step  | loss=0.4158, accuracy=0.9243, f1=0.9245, runtime=74.4389
+[2022/03/29 07:38:48] (Epoch 01) measured #1: train | loss=0.3512, accuracy=0.9636, f1=0.9626, runtime=24.4383
+[2022/03/29 07:38:48] (Epoch 01) measured #1: valid | loss=0.4888, accuracy=0.8208, f1=0.8067, runtime=0.8694
+[2022/03/29 07:38:50] (Epoch 01) exported #1: model | output/KLUE-STS2-morp-full-0329.0736/pytorch_model-01e
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[2022/03/29 07:38:53] (Epoch 02) composed #1: learning_rate=0.0000200000
+[2022/03/29 07:38:57] (Epoch 02) training #1: 100%|██████████████████████████████| 122/122 [01:16<00:00,  1.60it/s]
+[2022/03/29 07:40:18] (Epoch 02) metering #1: 100%|██████████████████████████████| 122/122 [00:24<00:00,  4.89it/s]
+[2022/03/29 07:40:44] (Epoch 02) metering #1: 100%|██████████████████████████████| 6/6 [00:00<00:00,  6.77it/s]
+[2022/03/29 07:40:49] (Epoch 02) measured #1: step  | loss=0.3552, accuracy=0.9581, f1=0.9570, runtime=76.1236
+[2022/03/29 07:40:49] (Epoch 02) measured #1: train | loss=0.3419, accuracy=0.9714, f1=0.9705, runtime=24.9520
+[2022/03/29 07:40:49] (Epoch 02) measured #1: valid | loss=0.5056, accuracy=0.8054, f1=0.7900, runtime=0.8878
+[2022/03/29 07:40:51] (Epoch 02) exported #1: model | output/KLUE-STS2-morp-full-0329.0736/pytorch_model-02e
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[2022/03/29 07:40:54] (Epoch 03) composed #1: learning_rate=0.0000200000
+[2022/03/29 07:40:58] (Epoch 03) training #1: 100%|██████████████████████████████| 122/122 [01:16<00:00,  1.59it/s]
+[2022/03/29 07:42:19] (Epoch 03) metering #1: 100%|██████████████████████████████| 122/122 [00:25<00:00,  4.83it/s]
+[2022/03/29 07:42:46] (Epoch 03) metering #1: 100%|██████████████████████████████| 6/6 [00:00<00:00,  6.71it/s]
+[2022/03/29 07:42:52] (Epoch 03) measured #1: step  | loss=0.3492, accuracy=0.9642, f1=0.9632, runtime=76.9385
+[2022/03/29 07:42:52] (Epoch 03) measured #1: train | loss=0.3380, accuracy=0.9754, f1=0.9746, runtime=25.2608
+[2022/03/29 07:42:52] (Epoch 03) measured #1: valid | loss=0.4793, accuracy=0.8304, f1=0.8182, runtime=0.8955
+[2022/03/29 07:42:54] (Epoch 03) exported #1: model | output/KLUE-STS2-morp-full-0329.0736/pytorch_model-03e
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[2022/03/29 07:42:57] (Epoch 04) composed #1: learning_rate=0.0000200000
+[2022/03/29 07:43:01] (Epoch 04) training #1: 100%|██████████████████████████████| 122/122 [01:17<00:00,  1.57it/s]
+[2022/03/29 07:44:23] (Epoch 04) metering #1: 100%|██████████████████████████████| 122/122 [00:25<00:00,  4.77it/s]
+[2022/03/29 07:44:49] (Epoch 04) metering #1: 100%|██████████████████████████████| 6/6 [00:00<00:00,  6.55it/s]
+[2022/03/29 07:44:55] (Epoch 04) measured #1: step  | loss=0.3441, accuracy=0.9688, f1=0.9679, runtime=77.8343
+[2022/03/29 07:44:55] (Epoch 04) measured #1: train | loss=0.3340, accuracy=0.9790, f1=0.9784, runtime=25.5841
+[2022/03/29 07:44:55] (Epoch 04) measured #1: valid | loss=0.4926, accuracy=0.8227, f1=0.8115, runtime=0.9174
+[2022/03/29 07:44:57] (Epoch 04) exported #1: model | output/KLUE-STS2-morp-full-0329.0736/pytorch_model-04e
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[2022/03/29 07:45:00] (Epoch 05) composed #1: learning_rate=0.0000200000
+[2022/03/29 07:45:04] (Epoch 05) training #1: 100%|██████████████████████████████| 122/122 [01:18<00:00,  1.55it/s]
+[2022/03/29 07:46:27] (Epoch 05) metering #1: 100%|██████████████████████████████| 122/122 [00:25<00:00,  4.74it/s]
+[2022/03/29 07:46:54] (Epoch 05) metering #1: 100%|██████████████████████████████| 6/6 [00:00<00:00,  6.51it/s]
+[2022/03/29 07:47:00] (Epoch 05) measured #1: step  | loss=0.3400, accuracy=0.9728, f1=0.9720, runtime=78.7662
+[2022/03/29 07:47:00] (Epoch 05) measured #1: train | loss=0.3311, accuracy=0.9820, f1=0.9814, runtime=25.7852
+[2022/03/29 07:47:00] (Epoch 05) measured #1: valid | loss=0.4845, accuracy=0.8324, f1=0.8199, runtime=0.9230
+[2022/03/29 07:47:02] (Epoch 05) exported #1: model | output/KLUE-STS2-morp-full-0329.0736/pytorch_model-05e
+================================================================================================================================================================================================================================================================
+[2022/03/29 07:47:05] [EXIT] train (KLUE-STS2-morp-full-0329.0736) ($=00:10:31.647)
+================================================================================================================================================================================================================================================================
+
+Process finished with exit code 0

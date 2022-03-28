@@ -1,0 +1,174 @@
+{
+    "name": "KLUE-STS2-word-full-0329.0736",
+    "seed": 1,
+    "gpus": [
+        3
+    ],
+    "strategy": null,
+    "precision": 32,
+    "test_batch_size": 96,
+    "train_batch_size": 96,
+    "max_sequence_length": 128,
+    "pretrained": "pretrained/KoELECTRA-Base-v3",
+    "data_files": {
+        "train": {
+            "file": "data/klue-sts/train.json",
+            "rows": 11668
+        },
+        "valid": {
+            "file": "data/klue-sts/validation.json",
+            "rows": 519
+        },
+        "test": null
+    },
+    "input_text1": "sentence1",
+    "input_text2": "sentence2",
+    "model": "HeadModel(pretrained=KoELECTRA-Base-v3)",
+    "optimizer": "Adam(lr=2e-05)",
+    "scheduler": "StepLR(step_size=1, gamma=1.0)",
+    "loss_metric": "CrossEntropyLoss()",
+    "score_metric": "load_metric(glue, mrpc)",
+    "total_steps": 610,
+    "steps_per_epoch": 122,
+    "num_train_epochs": 5,
+    "scheduling_epochs": 1,
+    "scheduling_gamma": 1.0,
+    "learning_rate": 2e-05,
+    "records": [
+        {
+            "step": 122,
+            "epoch": 1.0,
+            "device": 0,
+            "metrics": {
+                "step": {
+                    "runtime": 74.083594,
+                    "loss": 0.46855804324150085,
+                    "accuracy": 0.917980802194035,
+                    "f1": 0.9148500756295044
+                },
+                "train": {
+                    "runtime": 24.280115,
+                    "loss": 0.36183255910873413,
+                    "accuracy": 0.9628042509427494,
+                    "f1": 0.9607523964550552
+                },
+                "valid": {
+                    "runtime": 0.857327,
+                    "loss": 0.5033130645751953,
+                    "accuracy": 0.8034682080924855,
+                    "f1": 0.7582938388625592
+                }
+            },
+            "model_path": "output/KLUE-STS2-word-full-0329.0736/pytorch_model-01e",
+            "learning_rate": 2e-05
+        },
+        {
+            "step": 244,
+            "epoch": 2.0,
+            "device": 0,
+            "metrics": {
+                "step": {
+                    "runtime": 74.916647,
+                    "loss": 0.35629838705062866,
+                    "accuracy": 0.9642612272883099,
+                    "f1": 0.9631788079470198
+                },
+                "train": {
+                    "runtime": 24.541058,
+                    "loss": 0.340244859457016,
+                    "accuracy": 0.975145697634556,
+                    "f1": 0.9742313843966589
+                },
+                "valid": {
+                    "runtime": 0.867484,
+                    "loss": 0.4831392467021942,
+                    "accuracy": 0.8304431599229287,
+                    "f1": 0.8143459915611815
+                }
+            },
+            "model_path": "output/KLUE-STS2-word-full-0329.0736/pytorch_model-02e",
+            "learning_rate": 2e-05
+        },
+        {
+            "step": 366,
+            "epoch": 3.0,
+            "device": 0,
+            "metrics": {
+                "step": {
+                    "runtime": 74.456711,
+                    "loss": 0.34913700819015503,
+                    "accuracy": 0.9663181350702776,
+                    "f1": 0.9652857521420368
+                },
+                "train": {
+                    "runtime": 24.651348,
+                    "loss": 0.3398855924606323,
+                    "accuracy": 0.9736887212889955,
+                    "f1": 0.9724490711657543
+                },
+                "valid": {
+                    "runtime": 0.862621,
+                    "loss": 0.4769303798675537,
+                    "accuracy": 0.8285163776493256,
+                    "f1": 0.7963386727688787
+                }
+            },
+            "model_path": "output/KLUE-STS2-word-full-0329.0736/pytorch_model-03e",
+            "learning_rate": 2e-05
+        },
+        {
+            "step": 488,
+            "epoch": 4.0,
+            "device": 0,
+            "metrics": {
+                "step": {
+                    "runtime": 75.247518,
+                    "loss": 0.343483567237854,
+                    "accuracy": 0.9710318820706205,
+                    "f1": 0.970104369361401
+                },
+                "train": {
+                    "runtime": 24.674673,
+                    "loss": 0.33692631125450134,
+                    "accuracy": 0.9766026739801166,
+                    "f1": 0.9760589318600367
+                },
+                "valid": {
+                    "runtime": 0.8706,
+                    "loss": 0.49793457984924316,
+                    "accuracy": 0.8111753371868978,
+                    "f1": 0.8108108108108109
+                }
+            },
+            "model_path": "output/KLUE-STS2-word-full-0329.0736/pytorch_model-04e",
+            "learning_rate": 2e-05
+        },
+        {
+            "step": 610,
+            "epoch": 5.0,
+            "device": 0,
+            "metrics": {
+                "step": {
+                    "runtime": 75.552832,
+                    "loss": 0.33689919114112854,
+                    "accuracy": 0.9766883784710318,
+                    "f1": 0.9759249424676935
+                },
+                "train": {
+                    "runtime": 24.701066,
+                    "loss": 0.3326742351055145,
+                    "accuracy": 0.980973603016798,
+                    "f1": 0.9804646251319957
+                },
+                "valid": {
+                    "runtime": 0.870002,
+                    "loss": 0.4818495213985443,
+                    "accuracy": 0.8323699421965318,
+                    "f1": 0.8263473053892215
+                }
+            },
+            "model_path": "output/KLUE-STS2-word-full-0329.0736/pytorch_model-05e",
+            "learning_rate": 2e-05
+        }
+    ]
+}

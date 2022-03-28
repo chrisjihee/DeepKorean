@@ -1,0 +1,174 @@
+{
+    "name": "KLUE-STS2-morp-full-0329.0736",
+    "seed": 1,
+    "gpus": [
+        2
+    ],
+    "strategy": null,
+    "precision": 32,
+    "test_batch_size": 96,
+    "train_batch_size": 96,
+    "max_sequence_length": 128,
+    "pretrained": "pretrained/KorBERT-Base-morp",
+    "data_files": {
+        "train": {
+            "file": "data/klue-sts-morp/train.json",
+            "rows": 11668
+        },
+        "valid": {
+            "file": "data/klue-sts-morp/validation.json",
+            "rows": 519
+        },
+        "test": null
+    },
+    "input_text1": "sentence1_morp",
+    "input_text2": "sentence2_morp",
+    "model": "HeadModel(pretrained=KorBERT-Base-morp)",
+    "optimizer": "Adam(lr=2e-05)",
+    "scheduler": "StepLR(step_size=1, gamma=1.0)",
+    "loss_metric": "CrossEntropyLoss()",
+    "score_metric": "load_metric(glue, mrpc)",
+    "total_steps": 610,
+    "steps_per_epoch": 122,
+    "num_train_epochs": 5,
+    "scheduling_epochs": 1,
+    "scheduling_gamma": 1.0,
+    "learning_rate": 2e-05,
+    "records": [
+        {
+            "step": 122,
+            "epoch": 1.0,
+            "device": 0,
+            "metrics": {
+                "step": {
+                    "runtime": 74.438875,
+                    "loss": 0.41576072573661804,
+                    "accuracy": 0.924322934521769,
+                    "f1": 0.9245234635438927
+                },
+                "train": {
+                    "runtime": 24.43827,
+                    "loss": 0.35119014978408813,
+                    "accuracy": 0.9635755913609874,
+                    "f1": 0.9626044874615046
+                },
+                "valid": {
+                    "runtime": 0.869353,
+                    "loss": 0.4887509346008301,
+                    "accuracy": 0.8208092485549133,
+                    "f1": 0.8066528066528066
+                }
+            },
+            "model_path": "output/KLUE-STS2-morp-full-0329.0736/pytorch_model-01e",
+            "learning_rate": 2e-05
+        },
+        {
+            "step": 244,
+            "epoch": 2.0,
+            "device": 0,
+            "metrics": {
+                "step": {
+                    "runtime": 76.123587,
+                    "loss": 0.35520151257514954,
+                    "accuracy": 0.9580905039424066,
+                    "f1": 0.9570412017921462
+                },
+                "train": {
+                    "runtime": 24.952038,
+                    "loss": 0.34186631441116333,
+                    "accuracy": 0.9713747000342818,
+                    "f1": 0.9704738330975954
+                },
+                "valid": {
+                    "runtime": 0.887822,
+                    "loss": 0.5055722594261169,
+                    "accuracy": 0.8053949903660886,
+                    "f1": 0.7900207900207901
+                }
+            },
+            "model_path": "output/KLUE-STS2-morp-full-0329.0736/pytorch_model-02e",
+            "learning_rate": 2e-05
+        },
+        {
+            "step": 366,
+            "epoch": 3.0,
+            "device": 0,
+            "metrics": {
+                "step": {
+                    "runtime": 76.938549,
+                    "loss": 0.3492071330547333,
+                    "accuracy": 0.9641755227973946,
+                    "f1": 0.9632107023411371
+                },
+                "train": {
+                    "runtime": 25.26082,
+                    "loss": 0.3379819691181183,
+                    "accuracy": 0.975402811107302,
+                    "f1": 0.9746488826075435
+                },
+                "valid": {
+                    "runtime": 0.895473,
+                    "loss": 0.4793323576450348,
+                    "accuracy": 0.8304431599229287,
+                    "f1": 0.8181818181818182
+                }
+            },
+            "model_path": "output/KLUE-STS2-morp-full-0329.0736/pytorch_model-03e",
+            "learning_rate": 2e-05
+        },
+        {
+            "step": 488,
+            "epoch": 4.0,
+            "device": 0,
+            "metrics": {
+                "step": {
+                    "runtime": 77.834275,
+                    "loss": 0.3441091477870941,
+                    "accuracy": 0.9688035653068221,
+                    "f1": 0.9679182090604618
+                },
+                "train": {
+                    "runtime": 25.584121,
+                    "loss": 0.33399561047554016,
+                    "accuracy": 0.9790023997257457,
+                    "f1": 0.9783702657367354
+                },
+                "valid": {
+                    "runtime": 0.917412,
+                    "loss": 0.49258601665496826,
+                    "accuracy": 0.8227360308285164,
+                    "f1": 0.8114754098360656
+                }
+            },
+            "model_path": "output/KLUE-STS2-morp-full-0329.0736/pytorch_model-04e",
+            "learning_rate": 2e-05
+        },
+        {
+            "step": 610,
+            "epoch": 5.0,
+            "device": 0,
+            "metrics": {
+                "step": {
+                    "runtime": 78.766229,
+                    "loss": 0.34002047777175903,
+                    "accuracy": 0.9728316763798424,
+                    "f1": 0.9719642699212878
+                },
+                "train": {
+                    "runtime": 25.785197,
+                    "loss": 0.33107897639274597,
+                    "accuracy": 0.982002056907782,
+                    "f1": 0.9814323607427055
+                },
+                "valid": {
+                    "runtime": 0.922986,
+                    "loss": 0.4844988286495209,
+                    "accuracy": 0.8323699421965318,
+                    "f1": 0.8198757763975156
+                }
+            },
+            "model_path": "output/KLUE-STS2-morp-full-0329.0736/pytorch_model-05e",
+            "learning_rate": 2e-05
+        }
+    ]
+}
