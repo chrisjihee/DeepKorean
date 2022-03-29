@@ -113,7 +113,7 @@ def remove_any(path) -> Path:
 
 def load_json(path, **kwargs) -> dict:
     file = Path(path)
-    assert file.exists() and file.is_file()
+    assert file.exists() and file.is_file(), f"file={file}"
     with file.open() as f:
         return json.load(f, **kwargs)
 

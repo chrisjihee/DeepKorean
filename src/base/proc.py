@@ -3,8 +3,8 @@ import subprocess
 from multiprocessing import Process
 
 from .io import *
-from .str import horizontal_line
 from .time import *
+from .util import *
 
 
 def get_hostname():

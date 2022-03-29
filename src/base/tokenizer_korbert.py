@@ -153,24 +153,24 @@ if __name__ == "__main__":
     print(f"morps={morps}")
 
     tokenizer1A = AutoTokenizer.from_pretrained(
-        "model/KoELECTRA-Base-v3",
+        "pretrained/KoELECTRA-Base-v3",
         max_len=512,
         use_fast=True,
     )
     tokenizer1B = BertTokenizer(
-        vocab_file="model/KoELECTRA-Base-v3/vocab.txt",
+        vocab_file="pretrained/KoELECTRA-Base-v3/vocab.txt",
         do_lower_case=False,
         tokenize_chinese_chars=False,
     )
     tokenizer2A = KorbertTokenizer.from_pretrained(
-        "model/ROBERTA-morp20.08",
+        "pretrained/KorBERT-v1-morp19",
         max_len=512,
         use_fast=False,
         do_lower_case=False,
         tokenize_chinese_chars=False,
     )
     tokenizer2B = KorbertTokenizer(
-        vocab_file="model/ELECTRA-morp20.05/vocab.txt",
+        vocab_file="pretrained/KorBERT-v1-morp19/vocab.txt",
         do_lower_case=False,
         tokenize_chinese_chars=False,
     )
