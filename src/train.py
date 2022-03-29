@@ -1,5 +1,7 @@
-# Reference 1) https://github.com/PyTorchLightning/pytorch-lightning/tree/master/pl_examples/basic_examples/mnist_examples
-# Reference 2) https://github.com/huggingface/transformers/tree/main/examples/pytorch/text-classification
+"""
+# Reference 1: https://github.com/PyTorchLightning/pytorch-lightning/tree/master/pl_examples/basic_examples/mnist_examples
+# Reference 2: https://github.com/huggingface/transformers/tree/main/examples/pytorch/text-classification
+"""
 import argparse
 from pathlib import Path
 from sys import stdout, stderr
@@ -99,6 +101,11 @@ class HeadModel(nn.Module):
 
 
 class MyTrainer(LightningLite):
+    """
+    Trainer for sentence-level classification or regression tasks.
+    - Refer to `pytorch_lightning.lite.LightningLite`
+    """
+
     def __init__(self, config, prefix=None):
         self.prefix: Optional[str] = prefix
         self.state: AttrDict = load_attrs(config, pre={"name": Path(config).stem})
@@ -275,16 +282,15 @@ class MyTrainer(LightningLite):
     def each_step(self, batch: dict, batch_idx, input_keys):
         x = {k: batch.pop(k) for k in input_keys}
         p = self.forward(**x)
-        y = None
         if len(self.state.label_column.split('.')) == 2:
             major, minor = self.state.label_column.split('.')
             y = batch.pop(major).pop(minor)
         else:
             y = batch.pop(self.state.label_column)
-        if self.state.loss_metric.startswith('MSELoss'):
+        if self.state.loss_metric.startswith('MSELoss'):  # regression
             p = p.view(-1)
             y = y.float().view(-1)
-        else:
+        else:  # classification
             y = y.long().view(-1)
         loss = self.loss_metric(input=p, target=y)
         return {'y': y, 'p': p, 'loss': loss}
@@ -296,7 +302,7 @@ class MyTrainer(LightningLite):
         ys = torch.cat([x['y'] for x in outputs]).detach().cpu().numpy()
         ps = torch.cat([x['p'] for x in outputs]).detach().cpu().numpy()
         score['loss'] = torch.stack([x['loss'] for x in outputs]).detach().cpu().numpy().mean().item()
-        if len(ps.shape) > 1:
+        if len(ps.shape) > 1:  # classification
             ps = np.argmax(ps, axis=1)
         score.update(self.score_metric.compute(references=ys, predictions=ps))
         return score
@@ -366,9 +372,8 @@ class MyTrainer(LightningLite):
             self.state.test_batch_size = self.state.max_batch_size[f"max_sequence_length={self.state.max_sequence_length}"][f"precision={self.state.precision}"]
             self.log_state_value(key='test_batch_size', file=stderr)
         for k in self.raw_datasets.keys():
-            self.dataloader[k] = self.setup_dataloaders(DataLoader(self.raw_datasets[k],
-                                                                   batch_size=self.state.train_batch_size if k == "train" else self.state.test_batch_size,
-                                                                   shuffle=False))
+            self.dataloader[k] = self.setup_dataloaders(DataLoader(self.raw_datasets[k], shuffle=False,
+                                                                   batch_size=self.state.train_batch_size if k == "train" else self.state.test_batch_size))
 
         # print dataset info
         if logging:
