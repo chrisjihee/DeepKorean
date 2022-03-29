@@ -14,7 +14,7 @@ cd transformers-4.18; rm -rf .* C* I* M* README_* c* d* e* h* m* n* p* scr* t* u
 cd pytorch-lightning-1.6; rm -rf .* _* C* M* S* d* e* l* t* pyp* pl_*; chmod 664 *.*; cd ..;
 
 # install
-conda install pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch -y;
+conda install -n DeepKorean pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch -y;
 pip install -e attrdict-2.0; pip install -e deepspeed-0.6;
 pip install -e pytorch-lightning-1.6; pip install -e transformers-4.18;
 pip install --upgrade datasets flatbuffers openpyxl scikit-learn SQLAlchemy;
