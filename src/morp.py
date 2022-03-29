@@ -1,33 +1,32 @@
+import contextlib
 import json
+from urllib.request import urlopen
 
 import urllib3
 
 
-def tag_morps(text: str):
-    openApiURL = "http://aiopen.etri.re.kr:8000/WiseNLU"
-    accessKey = "ecc18e45-d0a9-42a5-ab32-c61d2909795b"
+class MLTagger:
+    def __init__(self, netloc: str):
+        self.netloc = netloc
+        self.api = f"http://{self.netloc}/interface/lm_interface"
 
-    analysisCode = "morp"
-    requestJson = {
-        "access_key": accessKey,
-        "argument": {
-            "text": text,
-            "analysis_code": analysisCode
-        }
-    }
+    def do_lang(self, text: str):
+        param = {"argument": {"analyzer_types": ["MORPH"], "text": text}}
+        try:
+            with contextlib.closing(urlopen(self.api, json.dumps(param).encode())) as res:
+                return json.loads(res.read().decode())['return_object']['json']
+        except:
+            print("\n" + "=" * 120)
+            print(f'[error] Can not connect to WiseAPI[{self.api}]')
+            print("=" * 120 + "\n")
+            exit(1)
 
-    http = urllib3.PoolManager()
-    response = http.request("POST", openApiURL, headers={"Content-TYpe": "application/json; charset=UTF-8"}, body=json.dumps(requestJson))
-
-    print(f"responseCode = {response.status}")
-    obj = json.loads(str(response.data, "utf-8"))
-    ndoc = obj["return_object"]
-    for sentence in ndoc['sentence']:
-        morps = []
-        for morp in sentence['morp']:
-            morps.append(f"{morp['lemma']}/{morp['type']}")
-        print(" ".join(morps))
+    def tag(self, text: str):
+        ndoc = self.do_lang(text)
+        morps = ' '.join([f"{m['lemma']}/{m['type']}" for s in ndoc['sentence'] for m in s['morp']])
+        return morps
 
 
 if __name__ == "__main__":
-    tag_morps(text="운동주는 한국의 독립운동가, 시인, 작가이다.")
+    tagger = MLTagger(netloc="localhost:19001")
+    print(tagger.tag(text="운동주는 한국의 독립운동가, 시인, 작가이다."))
