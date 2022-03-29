@@ -1,35 +1,12 @@
 import argparse
-import contextlib
 import json
 import shutil
 from pathlib import Path
-from urllib.request import urlopen
 
 from datasets import load_dataset
 
 from base.io import make_parent_dir
-
-
-class MLTagger:
-    def __init__(self, netloc: str):
-        self.netloc = netloc
-        self.api = f"http://{self.netloc}/interface/lm_interface"
-
-    def do_lang(self, text: str):
-        param = {"argument": {"analyzer_types": ["MORPH"], "text": text}}
-        try:
-            with contextlib.closing(urlopen(self.api, json.dumps(param).encode())) as res:
-                return json.loads(res.read().decode())['return_object']['json']
-        except:
-            print("\n" + "=" * 120)
-            print(f'[error] Can not connect to WiseAPI[{self.api}]')
-            print("=" * 120 + "\n")
-            exit(1)
-
-    def tag(self, text: str):
-        ndoc = self.do_lang(text)
-        morps = ' '.join([f"{m['lemma']}/{m['type']}" for s in ndoc['sentence'] for m in s['morp']])
-        return morps
+from morp import MLTagger
 
 
 def convert_json_lines(infile, outfile):

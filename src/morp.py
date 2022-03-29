@@ -2,8 +2,6 @@ import contextlib
 import json
 from urllib.request import urlopen
 
-import urllib3
-
 
 class MLTagger:
     def __init__(self, netloc: str):
