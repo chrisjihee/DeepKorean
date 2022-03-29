@@ -1,3 +1,5 @@
+# Reference 1) https://github.com/PyTorchLightning/pytorch-lightning/tree/master/pl_examples/basic_examples/mnist_examples
+# Reference 2) https://github.com/huggingface/transformers/tree/main/examples/pytorch/text-classification
 import argparse
 from pathlib import Path
 from sys import stdout, stderr
@@ -8,28 +10,28 @@ import numpy as np
 import torch
 import torch.nn as nn
 import torch.optim as optim
-from attrdict.dictionary import AttrDict
 from datasets import Dataset, DatasetDict, Sequence, Value
 from datasets import load_dataset
 from datasets import load_metric
 from datasets.metric import Metric
-from pytorch_lightning import seed_everything
-from pytorch_lightning.lite import LightningLite
-from pytorch_lightning.strategies import DeepSpeedStrategy
 from torch.nn.modules.loss import _Loss
 from torch.optim import Optimizer
 from torch.optim.lr_scheduler import StepLR
 from torch.utils.data import DataLoader
 from tqdm import tqdm
-from transformers import AutoConfig, AutoModel, AutoTokenizer, PreTrainedTokenizer, PreTrainedModel, PretrainedConfig
-from transformers.activations import ACT2FN
 
+from attrdict.dictionary import AttrDict
 from base.io import RedirStd, set_cuda_path, set_torch_ext_path, make_dir, load_attrs, save_attrs, new_path, remove_any
 from base.str import horizontal_line, to_morphemes
 from base.tensor import to_tensor_batch
 from base.time import now, MyTimer
 from base.tokenizer_korbert import KorbertTokenizer
 from base.util import append_intersection
+from pytorch_lightning import seed_everything
+from pytorch_lightning.lite import LightningLite
+from pytorch_lightning.strategies import DeepSpeedStrategy
+from transformers import AutoConfig, AutoModel, AutoTokenizer, PreTrainedTokenizer, PreTrainedModel, PretrainedConfig
+from transformers.activations import ACT2FN
 
 
 class HeadModel(nn.Module):
