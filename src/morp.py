@@ -28,5 +28,5 @@ class MLTagger:
 
 
 if __name__ == "__main__":
-    tagger = MLTagger(netloc="localhost:19001")
+    tagger = MLTagger(netloc="129.254.164.137:19001")
     print(tagger.tag(text="운동주는 한국의 독립운동가, 시인, 작가이다."))
